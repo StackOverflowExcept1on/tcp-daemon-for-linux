@@ -26,10 +26,11 @@ namespace this_coro = boost::asio::this_coro;
 
 awaitable<void> handler(tcp::socket socket) {
     auto endpoint = socket.remote_endpoint();
+    auto [address, port] = std::make_tuple(endpoint.address().to_string(), endpoint.port());
     try {
-        syslog(LOG_INFO | LOG_USER, "%s:%d connected", endpoint.address().to_string().c_str(), endpoint.port());
+        syslog(LOG_INFO | LOG_USER, "%s:%d connected", address.c_str(), port);
 
-        std::string filename = endpoint.address().to_string() + "_" + std::to_string(endpoint.port());
+        std::string filename = address + "_" + std::to_string(port);
         std::ofstream output(filename, std::fstream::trunc | std::fstream::out);
 
         std::array<char, 4096> buf{};
@@ -39,7 +40,7 @@ awaitable<void> handler(tcp::socket socket) {
             output.flush();
         }
     } catch (std::exception &e) {
-        syslog(LOG_INFO | LOG_USER, "%s:%d disconnected", endpoint.address().to_string().c_str(), endpoint.port());
+        syslog(LOG_INFO | LOG_USER, "%s:%d disconnected", address.c_str(), port);
     }
 }
 
