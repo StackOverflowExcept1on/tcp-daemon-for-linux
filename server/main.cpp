@@ -30,7 +30,7 @@ awaitable<void> handler(tcp::socket socket) {
     try {
         syslog(LOG_INFO | LOG_USER, "%s:%d connected", address.c_str(), port);
 
-        std::string filename = address + "_" + std::to_string(port);
+        auto filename = address + "_" + std::to_string(port);
         std::ofstream output(filename, std::fstream::trunc | std::fstream::out);
 
         std::array<char, 4096> buf{};
