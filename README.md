@@ -1,5 +1,7 @@
 ### TCP client & server (C++20 & Boost.Asio)
 
+[![Build Status](https://github.com/StackOverflowExcept1on/tcp-daemon-for-linux/actions/workflows/ci.yml/badge.svg)](https://github.com/StackOverflowExcept1on/tcp-daemon-for-linux/actions/workflows/ci.yml)
+
 [![asciicast](https://asciinema.org/a/zxX8zMCGW5bf8zSJtSe1Z4EI5.svg)](https://asciinema.org/a/zxX8zMCGW5bf8zSJtSe1Z4EI5)
 
 This is one of the cool tasks from my university
